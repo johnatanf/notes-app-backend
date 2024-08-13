@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   Note.init(
     {
       id: {
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,

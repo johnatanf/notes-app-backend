@@ -8,7 +8,6 @@ module.exports = {
     await UserAccount.bulkCreate(
       [
         {
-          id: 1,
           full_name: "User 1",
           username: "user1",
           email: "user1@notesapp.com",
@@ -20,7 +19,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 2,
           full_name: "User 2",
           username: "user2",
           email: "user2@notesapp.com",
