@@ -59,6 +59,11 @@ module.exports = {
         },
       ],
     );
+    
+    // reset postgresql sequence after seeding
+    await queryInterface.sequelize.query(
+      `SELECT setval('"Notes_id_seq"', (SELECT MAX(id) FROM "Notes"), true);`
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
