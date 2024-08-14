@@ -35,7 +35,7 @@ const createNote = async (req, res, next) => {
 const editNote = async (req, res, next) => {
   try {
     const noteId = req.params.id;
-    const { title, text } = req.body;
+    const { title, text, archived, pinned } = req.body;
 
     const existingNote = await Note.findOne({
       include: [
@@ -60,7 +60,7 @@ const editNote = async (req, res, next) => {
     }
 
     await Note.update(
-      { title, text },
+      { title, text, archived, pinned },
       {
         where: {
           id: noteId,

@@ -30,23 +30,31 @@ module.exports = (sequelize, DataTypes) => {
       },
       title: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       text: {
         type: DataTypes.TEXT,
+        allowNull: false,
       },
       archived: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       pinned: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
       updatedAt: {
         allowNull: false,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {
