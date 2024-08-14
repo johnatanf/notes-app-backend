@@ -1,7 +1,8 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const registerRoutes = require("./routes/register.js");
-// const loginRoutes = require("./routes/login.js");
-// const notesRoutes = require("./routes/notes.js");
+const loginRoutes = require("./routes/login.js");
+const notesRoutes = require("./routes/notes.js");
 const app = express();
 const port = 3000;
 
@@ -16,12 +17,13 @@ const errorHandler = (err, req, res, next) => {
   }
 };
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/register", registerRoutes);
-// app.use("/login", loginRoutes);
-// app.use("/notes", notesRoutes);
+app.use("/login", loginRoutes);
+app.use("/notes", notesRoutes);
 
 app.all("*", (req, res) => res.send("This route does not exist."));
 
