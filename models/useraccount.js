@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         allowNull: false,
       },
-      password: {
+      password_hash: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -88,13 +88,13 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeCreate: async (userAccount) => {
           try {
-            if (userAccount.password) {
+            if (userAccount.password_hash) {
               const salt = await bcrypt.genSalt(10);
               const hashedPassword = await bcrypt.hash(
-                userAccount.password,
+                userAccount.password_hash,
                 salt
               );
-              userAccount.password = hashedPassword;
+              userAccount.password_hash = hashedPassword;
             }
           } catch (error) {
             console.error("Error in beforeCreate hook:", error);
@@ -105,8 +105,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // Method to compare passwords
-  UserAccount.prototype.validPassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
+  UserAccount.prototype.validPassword = async function (password_hash) {
+    return await bcrypt.compare(password_hash, this.password_hash);
   };
 
   return UserAccount;

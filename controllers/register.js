@@ -10,7 +10,7 @@ const createUserAccount = async (req, res, next) => {
         full_name,
         username,
         email,
-        password,
+        password_hash,
     } = req.body;
 
     existingUser = await UserAccount.findOne({ where: { email } });
@@ -23,7 +23,7 @@ const createUserAccount = async (req, res, next) => {
         full_name,
         username,
         email,
-        password,
+        password_hash,
       });
     }
 
