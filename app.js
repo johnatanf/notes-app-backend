@@ -1,10 +1,10 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const registerRoutes = require("./routes/register.js");
 const loginRoutes = require("./routes/login.js");
 const notesRoutes = require("./routes/notes.js");
-const authRoutes = require("./routes/auth.js")
+const authRoutes = require("./routes/auth.js");
 const app = express();
 const port = 3000;
 
@@ -19,10 +19,12 @@ const errorHandler = (err, req, res, next) => {
   }
 };
 
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
