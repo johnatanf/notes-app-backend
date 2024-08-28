@@ -5,14 +5,14 @@ require("dotenv").config();
 
 const loginUser = async (req, res, next) => {
   try {
-    const { email, password_hash } = req.body;
+    const { email, password } = req.body;
 
     const user = await UserAccount.findOne({ where: { email } });
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const isMatch = await user.validPassword(password_hash);
+    const isMatch = await user.validPassword(password);
 
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
