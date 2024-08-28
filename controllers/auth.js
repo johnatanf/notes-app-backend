@@ -8,6 +8,16 @@ const checkAuthentication = async (req, res, next) => {
   }
 };
 
+const logoutUser = async (req, res, next) => {
+  try {
+    res.clearCookie("token");
+    return res.status(204).send();
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   checkAuthentication,
+  logoutUser,
 };
