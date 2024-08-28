@@ -14,7 +14,7 @@ const createUserAccount = async (req, res, next) => {
     existingUser = await UserAccount.findOne({ where: { email } });
 
     if (existingUser && existingUser.verified === true) {
-      return res.status(200).json({ message: "Email already verified" });
+      return res.status(409).json({ message: "Email already verified" });
     } else {
       // if email does not exist yet in database
       newUserAccount = await UserAccount.create({
