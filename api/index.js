@@ -40,10 +40,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("api/register", registerRoutes);
-app.use("api/login", loginRoutes);
-app.use("api/notes", notesRoutes);
-app.use("api/auth", authRoutes);
+app.use("/api/register", registerRoutes);
+app.use("/api/login", loginRoutes);
+app.use("/api/notes", notesRoutes);
+app.use("/api/auth", authRoutes);
 
 app.all("*", (req, res) => res.send("This route does not exist."));
 
