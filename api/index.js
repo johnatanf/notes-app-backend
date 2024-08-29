@@ -49,4 +49,4 @@ app.all("*", (req, res) => res.send("This route does not exist."));
 
 app.use(errorHandler);
 
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
