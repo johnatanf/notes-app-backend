@@ -2,10 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const registerRoutes = require("./routes/register.js");
-const loginRoutes = require("./routes/login.js");
-const notesRoutes = require("./routes/notes.js");
-const authRoutes = require("./routes/auth.js");
+const registerRoutes = require("../routes/register.js");
+const loginRoutes = require("../routes/login.js");
+const notesRoutes = require("../routes/notes.js");
+const authRoutes = require("../routes/auth.js");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -39,10 +39,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/register", registerRoutes);
-app.use("/login", loginRoutes);
-app.use("/notes", notesRoutes);
-app.use("/auth", authRoutes);
+app.use("api/register", registerRoutes);
+app.use("api/login", loginRoutes);
+app.use("api/notes", notesRoutes);
+app.use("api/auth", authRoutes);
 
 app.all("*", (req, res) => res.send("This route does not exist."));
 
@@ -51,3 +51,5 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log(`starting port:${port}`);
 });
+
+module.exports.handler = serverless(app);
