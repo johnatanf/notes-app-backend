@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
+  "functions": {
+    "api/index.js": {
+      "handler": "index.handler",
+      "maxDuration": 10
     }
-  ]
+  }
 }

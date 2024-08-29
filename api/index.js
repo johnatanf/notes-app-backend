@@ -49,8 +49,4 @@ app.all("*", (req, res) => res.send("This route does not exist."));
 
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`starting port:${port}`);
-});
-
 module.exports.handler = serverless(app);
