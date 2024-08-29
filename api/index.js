@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const serverless = require('serverless-http');
+const serverless = require("serverless-http");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const registerRoutes = require("../routes/register.js");
@@ -23,9 +23,9 @@ const errorHandler = (err, req, res, next) => {
 
 const getCorsOrigin = () => {
   const origin = process.env.FRONTEND_ORIGIN;
-  if (origin === undefined || origin === '') {
+  if (origin === undefined || origin === "") {
     // Default to localhost if FRONTEND_ORIGIN is undefined or empty
-    return 'http://localhost:5173';
+    return "http://localhost:5173";
   }
   return origin;
 };
@@ -48,5 +48,12 @@ app.use("/api/auth", authRoutes);
 app.all("*", (req, res) => res.send("This route does not exist."));
 
 app.use(errorHandler);
+
+if (process.env.NODE_ENV === "development") {
+  // Only run this locally
+  app.listen(port, () => {
+    console.log(`Local server listening on port ${port}`);
+  });
+}
 
 module.exports = serverless(app);
