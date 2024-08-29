@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const serverless = require('serverless-http');
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const registerRoutes = require("../routes/register.js");
