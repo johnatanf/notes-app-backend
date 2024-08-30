@@ -11,7 +11,7 @@ View demo (frontend): https://notes-app-frontend-seven.vercel.app/note-app
 * PostgreSQL (hosted on [Supabase](https://supabase.com/))
 
 ## Frontend
-View backend project: https://github.com/johnatanf/notes-app-frontend
+View frontend project: https://github.com/johnatanf/notes-app-frontend
 
 ## Features
 * Serves as the API for the frontend app
